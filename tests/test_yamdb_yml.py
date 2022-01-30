@@ -9,7 +9,7 @@ class TestWorkflow:
     def test_workflow(self):
         yamdb_workflow_basename = 'yamdb_workflow'
 
-        yaml = f'{yamdb_workflow_basename}.yaml'
+        yaml = f'{yamdb_workflow_basename}yamdb_workflow.yaml'
         is_yaml = yaml in os.listdir(root_dir)
 
         yml = f'{yamdb_workflow_basename}.yml'
@@ -25,7 +25,7 @@ class TestWorkflow:
         if is_yaml and is_yml:
             assert False, (
                 f'В каталоге {root_dir} не должно быть двух файлов {yamdb_workflow_basename} '
-                'с расширениями .yaml и .yml\n'
+                'с расширениями yamdb_workflow.yaml и .yml\n'
                 'Удалите один из них'
             )
 
