@@ -1,4 +1,4 @@
-# YaMDb ![yamdb_workflow](https://github.com/github/workflows/yamdb_workflow.yml/badge.svg)
+# YaMDb ![yamdb_workflow](https://github.com/github/docs/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 YaMDb - это учебный проект, бэкенд и REST API сервис для обработки запросов по оценке различных произведений.
 
