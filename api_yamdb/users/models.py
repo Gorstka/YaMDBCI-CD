@@ -3,16 +3,12 @@ from django.db import models
 
 
 class User(AbstractUser):
-    ADMIN = 'admin'
-    MODERATOR = 'moderator'
-    USER = 'user'
-    CHOICES = (
-        (ADMIN, 'admin'),
-        (MODERATOR, 'moderator'),
-        (USER, 'user')
-    )
+    ADMIN = "admin"
+    MODERATOR = "moderator"
+    USER = "user"
+    CHOICES = ((ADMIN, "admin"), (MODERATOR, "moderator"), (USER, "user"))
     role = models.CharField(
-        'Role',
+        "Role",
         max_length=10,
         choices=CHOICES,
         blank=False,
@@ -20,7 +16,7 @@ class User(AbstractUser):
         null=False,
     )
     bio = models.TextField(
-        'Biography',
+        "Biography",
         blank=True,
     )
 
