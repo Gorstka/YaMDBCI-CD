@@ -3,14 +3,8 @@ from django.core.mail import send_mail
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import (
-    filters,
-    generics,
-    pagination,
-    permissions,
-    status,
-    viewsets,
-)
+from rest_framework import (filters, generics, pagination, permissions, status,
+                            viewsets)
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
@@ -22,22 +16,13 @@ from api_yamdb import settings
 
 from .filters import ModelFilter
 from .mixins import CreateDestroyListViewSet
-from .permissions import (
-    AdminOnly,
-    IsAdminOrReadOnly,
-    IsAuthorOrAdminOrModerator,
-)
-from .serializers import (
-    CategorySerializer,
-    CommentSerializer,
-    CustomUserSerializer,
-    GenreSerializer,
-    ReviewSerializer,
-    SignupSerializer,
-    TitleReadSerializer,
-    TitleWriteSerializer,
-    TokenSerializer,
-)
+from .permissions import (AdminOnly, IsAdminOrReadOnly,
+                          IsAuthorOrAdminOrModerator)
+from .serializers import (CategorySerializer, CommentSerializer,
+                          CustomUserSerializer, GenreSerializer,
+                          ReviewSerializer, SignupSerializer,
+                          TitleReadSerializer, TitleWriteSerializer,
+                          TokenSerializer)
 
 
 class CategoryViewSet(CreateDestroyListViewSet):
@@ -143,12 +128,6 @@ class CommentViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthorOrAdminOrModerator,)
     pagination_class = CommentsPagination
 
-    def get_queryset(self):
-        review_id = self.kwargs.get("review_id")
-        review = get_object_or_404(Review, pk=review_id)
-        comments = review.comments.all()
-        return comments
-
     def perform_create(self, serializer):
         review_id = self.kwargs.get("review_id")
         review = get_object_or_404(Review, pk=review_id)
@@ -162,12 +141,6 @@ class ReviewViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticatedOrReadOnly,
         IsAuthorOrAdminOrModerator,
     )
-
-    def get_queryset(self):
-        title_id = self.kwargs.get("title_id")
-        title = get_object_or_404(Title, pk=title_id)
-        reviews = title.reviews.all()
-        return reviews
 
     def perform_create(self, serializer):
         title = get_object_or_404(Title, pk=self.kwargs.get("title_id"))
