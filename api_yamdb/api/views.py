@@ -8,11 +8,11 @@ from rest_framework import (filters, generics, pagination, permissions, status,
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-
-from api_yamdb import settings
 from reviews.models import Category, Genre, Review, Title
 from reviews.pagination import CommentsPagination, ReviewsPagination
 from users.models import User
+
+from api_yamdb import settings
 
 from .filters import ModelFilter
 from .mixins import CreateDestroyListViewSet
