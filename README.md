@@ -1,7 +1,5 @@
 # YaMDb
 
-62.84.120.76
-
 ## Проект по настройке CI/CD
 
 ![yamdb_workflow](https://github.com/Gorstka/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
@@ -41,6 +39,6 @@ docker-compose exec web python manage.py collectstatic --no-input
 python manage.py loaddata fixtures.json
 ```
 
-### Автор проекта
+### _Автор_
 
-Горстка Сергей
+Горстка Сергей, github.com/Gorstka, gorstkasergei@gmail.com
